@@ -1,0 +1,77 @@
+%h1 Listing pitching_seasons
+
+%table
+  %tr
+    %th Team
+    %th Jersey number
+    %th Season order
+    %th Gp
+    %th Gs
+    %th W
+    %th L
+    %th Sv
+    %th Bs
+    %th Hld
+    %th Outs
+    %th Outs
+    %th Tbf
+    %th H
+    %th R
+    %th Er
+    %th Hr
+    %th K
+    %th Bb
+    %th Ibb
+    %th Hbp
+    %th Cg
+    %th Sho
+    %th Wp
+    %th Bk
+    %th Era
+    %th Whip
+    %th K percent
+    %th Bb percent
+    %th Babip
+    %th
+    %th
+    %th
+
+  - @pitching_seasons.each do |pitching_season|
+    %tr
+      %td= pitching_season.team
+      %td= pitching_season.jersey_number
+      %td= pitching_season.season_order
+      %td= pitching_season.gp
+      %td= pitching_season.gs
+      %td= pitching_season.w
+      %td= pitching_season.l
+      %td= pitching_season.sv
+      %td= pitching_season.bs
+      %td= pitching_season.hld
+      %td= pitching_season.outs
+      %td= pitching_season.outs
+      %td= pitching_season.tbf
+      %td= pitching_season.h
+      %td= pitching_season.r
+      %td= pitching_season.er
+      %td= pitching_season.hr
+      %td= pitching_season.k
+      %td= pitching_season.bb
+      %td= pitching_season.ibb
+      %td= pitching_season.hbp
+      %td= pitching_season.cg
+      %td= pitching_season.sho
+      %td= pitching_season.wp
+      %td= pitching_season.bk
+      %td= pitching_season.era
+      %td= pitching_season.whip
+      %td= pitching_season.k_percent
+      %td= pitching_season.bb_percent
+      %td= pitching_season.babip
+      %td= link_to 'Show', pitching_season
+      %td= link_to 'Edit', edit_pitching_season_path(pitching_season)
+      %td= link_to 'Destroy', pitching_season, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Pitching season', new_pitching_season_path

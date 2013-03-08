@@ -1,0 +1,100 @@
+= form_for @pitching_season do |f|
+  - if @pitching_season.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@pitching_season.errors.count, "error")} prohibited this pitching_season from being saved:"
+      %ul
+        - @pitching_season.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :team
+    = f.text_field :team
+  .field
+    = f.label :jersey_number
+    = f.number_field :jersey_number
+  .field
+    = f.label :season_order
+    = f.number_field :season_order
+  .field
+    = f.label :gp
+    = f.number_field :gp
+  .field
+    = f.label :gs
+    = f.number_field :gs
+  .field
+    = f.label :w
+    = f.number_field :w
+  .field
+    = f.label :l
+    = f.number_field :l
+  .field
+    = f.label :sv
+    = f.number_field :sv
+  .field
+    = f.label :bs
+    = f.number_field :bs
+  .field
+    = f.label :hld
+    = f.number_field :hld
+  .field
+    = f.label :outs
+    = f.number_field :outs
+  .field
+    = f.label :outs
+    = f.number_field :outs
+  .field
+    = f.label :tbf
+    = f.number_field :tbf
+  .field
+    = f.label :h
+    = f.number_field :h
+  .field
+    = f.label :r
+    = f.number_field :r
+  .field
+    = f.label :er
+    = f.number_field :er
+  .field
+    = f.label :hr
+    = f.number_field :hr
+  .field
+    = f.label :k
+    = f.number_field :k
+  .field
+    = f.label :bb
+    = f.number_field :bb
+  .field
+    = f.label :ibb
+    = f.number_field :ibb
+  .field
+    = f.label :hbp
+    = f.number_field :hbp
+  .field
+    = f.label :cg
+    = f.number_field :cg
+  .field
+    = f.label :sho
+    = f.number_field :sho
+  .field
+    = f.label :wp
+    = f.number_field :wp
+  .field
+    = f.label :bk
+    = f.number_field :bk
+  .field
+    = f.label :era
+    = f.text_field :era
+  .field
+    = f.label :whip
+    = f.text_field :whip
+  .field
+    = f.label :k_percent
+    = f.text_field :k_percent
+  .field
+    = f.label :bb_percent
+    = f.text_field :bb_percent
+  .field
+    = f.label :babip
+    = f.text_field :babip
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,120 @@
+= form_for @batting_season, :html => { :class => 'form-horizontal' } do |f|
+  .control-group
+    = f.label :team, :class => 'control-label'
+    .controls
+      = f.text_field :team, :class => 'text_field'
+  .control-group
+    = f.label :jersey_number, :class => 'control-label'
+    .controls
+      = f.number_field :jersey_number, :class => 'number_field'
+  .control-group
+    = f.label :season_order, :class => 'control-label'
+    .controls
+      = f.number_field :season_order, :class => 'number_field'
+  .control-group
+    = f.label :position, :class => 'control-label'
+    .controls
+      = f.text_field :position, :class => 'text_field'
+  .control-group
+    = f.label :ab, :class => 'control-label'
+    .controls
+      = f.number_field :ab, :class => 'number_field'
+  .control-group
+    = f.label :gp, :class => 'control-label'
+    .controls
+      = f.number_field :gp, :class => 'number_field'
+  .control-group
+    = f.label :pa, :class => 'control-label'
+    .controls
+      = f.number_field :pa, :class => 'number_field'
+  .control-group
+    = f.label :singles, :class => 'control-label'
+    .controls
+      = f.number_field :singles, :class => 'number_field'
+  .control-group
+    = f.label :doubles, :class => 'control-label'
+    .controls
+      = f.number_field :doubles, :class => 'number_field'
+  .control-group
+    = f.label :triples, :class => 'control-label'
+    .controls
+      = f.number_field :triples, :class => 'number_field'
+  .control-group
+    = f.label :hr, :class => 'control-label'
+    .controls
+      = f.number_field :hr, :class => 'number_field'
+  .control-group
+    = f.label :tb, :class => 'control-label'
+    .controls
+      = f.number_field :tb, :class => 'number_field'
+  .control-group
+    = f.label :r, :class => 'control-label'
+    .controls
+      = f.number_field :r, :class => 'number_field'
+  .control-group
+    = f.label :rbi, :class => 'control-label'
+    .controls
+      = f.number_field :rbi, :class => 'number_field'
+  .control-group
+    = f.label :bb, :class => 'control-label'
+    .controls
+      = f.number_field :bb, :class => 'number_field'
+  .control-group
+    = f.label :ibb, :class => 'control-label'
+    .controls
+      = f.number_field :ibb, :class => 'number_field'
+  .control-group
+    = f.label :so, :class => 'control-label'
+    .controls
+      = f.number_field :so, :class => 'number_field'
+  .control-group
+    = f.label :hbp, :class => 'control-label'
+    .controls
+      = f.number_field :hbp, :class => 'number_field'
+  .control-group
+    = f.label :sf, :class => 'control-label'
+    .controls
+      = f.number_field :sf, :class => 'number_field'
+  .control-group
+    = f.label :sh, :class => 'control-label'
+    .controls
+      = f.number_field :sh, :class => 'number_field'
+  .control-group
+    = f.label :gidp, :class => 'control-label'
+    .controls
+      = f.number_field :gidp, :class => 'number_field'
+  .control-group
+    = f.label :sb, :class => 'control-label'
+    .controls
+      = f.number_field :sb, :class => 'number_field'
+  .control-group
+    = f.label :cs, :class => 'control-label'
+    .controls
+      = f.number_field :cs, :class => 'number_field'
+  .control-group
+    = f.label :ba, :class => 'control-label'
+    .controls
+      = f.text_field :ba, :class => 'text_field'
+  .control-group
+    = f.label :obp, :class => 'control-label'
+    .controls
+      = f.text_field :obp, :class => 'text_field'
+  .control-group
+    = f.label :slg, :class => 'control-label'
+    .controls
+      = f.text_field :slg, :class => 'text_field'
+  .control-group
+    = f.label :ops, :class => 'control-label'
+    .controls
+      = f.text_field :ops, :class => 'text_field'
+  .control-group
+    = f.label :k_percent, :class => 'control-label'
+    .controls
+      = f.text_field :k_percent, :class => 'text_field'
+  .control-group
+    = f.label :bb_percent, :class => 'control-label'
+    .controls
+      = f.text_field :bb_percent, :class => 'text_field'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), batting_season_path, :class => 'btn'

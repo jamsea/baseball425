@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  abbreviation: MyString
+  city: MyString
+  team_name: MyString
+  league: MyString
+  division: MyString
+
+two:
+  abbreviation: MyString
+  city: MyString
+  team_name: MyString
+  league: MyString
+  division: MyString

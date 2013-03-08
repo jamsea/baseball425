@@ -1,0 +1,93 @@
+%p#notice= notice
+
+%p
+  %b Team:
+  = @batting_season.team
+%p
+  %b Jersey number:
+  = @batting_season.jersey_number
+%p
+  %b Season order:
+  = @batting_season.season_order
+%p
+  %b Position:
+  = @batting_season.position
+%p
+  %b Ab:
+  = @batting_season.ab
+%p
+  %b Gp:
+  = @batting_season.gp
+%p
+  %b Pa:
+  = @batting_season.pa
+%p
+  %b Singles:
+  = @batting_season.singles
+%p
+  %b Doubles:
+  = @batting_season.doubles
+%p
+  %b Triples:
+  = @batting_season.triples
+%p
+  %b Hr:
+  = @batting_season.hr
+%p
+  %b Tb:
+  = @batting_season.tb
+%p
+  %b R:
+  = @batting_season.r
+%p
+  %b Rbi:
+  = @batting_season.rbi
+%p
+  %b Bb:
+  = @batting_season.bb
+%p
+  %b Ibb:
+  = @batting_season.ibb
+%p
+  %b So:
+  = @batting_season.so
+%p
+  %b Hbp:
+  = @batting_season.hbp
+%p
+  %b Sf:
+  = @batting_season.sf
+%p
+  %b Sh:
+  = @batting_season.sh
+%p
+  %b Gidp:
+  = @batting_season.gidp
+%p
+  %b Sb:
+  = @batting_season.sb
+%p
+  %b Cs:
+  = @batting_season.cs
+%p
+  %b Ba:
+  = @batting_season.ba
+%p
+  %b Obp:
+  = @batting_season.obp
+%p
+  %b Slg:
+  = @batting_season.slg
+%p
+  %b Ops:
+  = @batting_season.ops
+%p
+  %b K percent:
+  = @batting_season.k_percent
+%p
+  %b Bb percent:
+  = @batting_season.bb_percent
+
+= link_to 'Edit', edit_batting_season_path(@batting_season)
+\|
+= link_to 'Back', batting_seasons_path

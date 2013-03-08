@@ -1,0 +1,97 @@
+= form_for @batting_season do |f|
+  - if @batting_season.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@batting_season.errors.count, "error")} prohibited this batting_season from being saved:"
+      %ul
+        - @batting_season.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :team
+    = f.text_field :team
+  .field
+    = f.label :jersey_number
+    = f.number_field :jersey_number
+  .field
+    = f.label :season_order
+    = f.number_field :season_order
+  .field
+    = f.label :position
+    = f.text_field :position
+  .field
+    = f.label :ab
+    = f.number_field :ab
+  .field
+    = f.label :gp
+    = f.number_field :gp
+  .field
+    = f.label :pa
+    = f.number_field :pa
+  .field
+    = f.label :singles
+    = f.number_field :singles
+  .field
+    = f.label :doubles
+    = f.number_field :doubles
+  .field
+    = f.label :triples
+    = f.number_field :triples
+  .field
+    = f.label :hr
+    = f.number_field :hr
+  .field
+    = f.label :tb
+    = f.number_field :tb
+  .field
+    = f.label :r
+    = f.number_field :r
+  .field
+    = f.label :rbi
+    = f.number_field :rbi
+  .field
+    = f.label :bb
+    = f.number_field :bb
+  .field
+    = f.label :ibb
+    = f.number_field :ibb
+  .field
+    = f.label :so
+    = f.number_field :so
+  .field
+    = f.label :hbp
+    = f.number_field :hbp
+  .field
+    = f.label :sf
+    = f.number_field :sf
+  .field
+    = f.label :sh
+    = f.number_field :sh
+  .field
+    = f.label :gidp
+    = f.number_field :gidp
+  .field
+    = f.label :sb
+    = f.number_field :sb
+  .field
+    = f.label :cs
+    = f.number_field :cs
+  .field
+    = f.label :ba
+    = f.text_field :ba
+  .field
+    = f.label :obp
+    = f.text_field :obp
+  .field
+    = f.label :slg
+    = f.text_field :slg
+  .field
+    = f.label :ops
+    = f.text_field :ops
+  .field
+    = f.label :k_percent
+    = f.text_field :k_percent
+  .field
+    = f.label :bb_percent
+    = f.text_field :bb_percent
+  .actions
+    = f.submit 'Save'

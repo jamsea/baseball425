@@ -1,0 +1,24 @@
+= form_for @team, :html => { :class => 'form-horizontal' } do |f|
+  .control-group
+    = f.label :abbreviation, :class => 'control-label'
+    .controls
+      = f.text_field :abbreviation, :class => 'text_field'
+  .control-group
+    = f.label :city, :class => 'control-label'
+    .controls
+      = f.text_field :city, :class => 'text_field'
+  .control-group
+    = f.label :team_name, :class => 'control-label'
+    .controls
+      = f.text_field :team_name, :class => 'text_field'
+  .control-group
+    = f.label :league, :class => 'control-label'
+    .controls
+      = f.text_field :league, :class => 'text_field'
+  .control-group
+    = f.label :division, :class => 'control-label'
+    .controls
+      = f.text_field :division, :class => 'text_field'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), teams_path, :class => 'btn'

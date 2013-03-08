@@ -1,0 +1,75 @@
+%h1 Listing batting_seasons
+
+%table
+  %tr
+    %th Team
+    %th Jersey number
+    %th Season order
+    %th Position
+    %th Ab
+    %th Gp
+    %th Pa
+    %th Singles
+    %th Doubles
+    %th Triples
+    %th Hr
+    %th Tb
+    %th R
+    %th Rbi
+    %th Bb
+    %th Ibb
+    %th So
+    %th Hbp
+    %th Sf
+    %th Sh
+    %th Gidp
+    %th Sb
+    %th Cs
+    %th Ba
+    %th Obp
+    %th Slg
+    %th Ops
+    %th K percent
+    %th Bb percent
+    %th
+    %th
+    %th
+
+  - @batting_seasons.each do |batting_season|
+    %tr
+      %td= batting_season.team
+      %td= batting_season.jersey_number
+      %td= batting_season.season_order
+      %td= batting_season.position
+      %td= batting_season.ab
+      %td= batting_season.gp
+      %td= batting_season.pa
+      %td= batting_season.singles
+      %td= batting_season.doubles
+      %td= batting_season.triples
+      %td= batting_season.hr
+      %td= batting_season.tb
+      %td= batting_season.r
+      %td= batting_season.rbi
+      %td= batting_season.bb
+      %td= batting_season.ibb
+      %td= batting_season.so
+      %td= batting_season.hbp
+      %td= batting_season.sf
+      %td= batting_season.sh
+      %td= batting_season.gidp
+      %td= batting_season.sb
+      %td= batting_season.cs
+      %td= batting_season.ba
+      %td= batting_season.obp
+      %td= batting_season.slg
+      %td= batting_season.ops
+      %td= batting_season.k_percent
+      %td= batting_season.bb_percent
+      %td= link_to 'Show', batting_season
+      %td= link_to 'Edit', edit_batting_season_path(batting_season)
+      %td= link_to 'Destroy', batting_season, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Batting season', new_batting_season_path

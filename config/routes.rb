@@ -1,4 +1,16 @@
 Baseball425::Application.routes.draw do
+  resources :pitching_seasons
+
+
+  resources :batting_seasons
+
+
+  resources :players
+
+
+  resources :teams
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -11,7 +23,10 @@ Baseball425::Application.routes.draw do
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  resources :batting_seasons
+  resources :pitching_seasons
+  resources :players
+  resources :teams
 
   # Sample resource route with options:
   #   resources :products do
@@ -48,7 +63,7 @@ Baseball425::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'teams#index'
 
   # See how all your routes lay out with "rake routes"
 

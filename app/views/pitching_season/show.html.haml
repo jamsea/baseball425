@@ -1,0 +1,125 @@
+- model_class = PitchingSeason
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human
+
+%p
+  %strong= model_class.human_attribute_name(:team) + ':'
+  %br
+  = @pitching_season.team
+%p
+  %strong= model_class.human_attribute_name(:jersey_number) + ':'
+  %br
+  = @pitching_season.jersey_number
+%p
+  %strong= model_class.human_attribute_name(:season_order) + ':'
+  %br
+  = @pitching_season.season_order
+%p
+  %strong= model_class.human_attribute_name(:gp) + ':'
+  %br
+  = @pitching_season.gp
+%p
+  %strong= model_class.human_attribute_name(:gs) + ':'
+  %br
+  = @pitching_season.gs
+%p
+  %strong= model_class.human_attribute_name(:w) + ':'
+  %br
+  = @pitching_season.w
+%p
+  %strong= model_class.human_attribute_name(:l) + ':'
+  %br
+  = @pitching_season.l
+%p
+  %strong= model_class.human_attribute_name(:sv) + ':'
+  %br
+  = @pitching_season.sv
+%p
+  %strong= model_class.human_attribute_name(:bs) + ':'
+  %br
+  = @pitching_season.bs
+%p
+  %strong= model_class.human_attribute_name(:hld) + ':'
+  %br
+  = @pitching_season.hld
+%p
+  %strong= model_class.human_attribute_name(:outs) + ':'
+  %br
+  = @pitching_season.outs
+%p
+  %strong= model_class.human_attribute_name(:tbf) + ':'
+  %br
+  = @pitching_season.tbf
+%p
+  %strong= model_class.human_attribute_name(:h) + ':'
+  %br
+  = @pitching_season.h
+%p
+  %strong= model_class.human_attribute_name(:r) + ':'
+  %br
+  = @pitching_season.r
+%p
+  %strong= model_class.human_attribute_name(:er) + ':'
+  %br
+  = @pitching_season.er
+%p
+  %strong= model_class.human_attribute_name(:hr) + ':'
+  %br
+  = @pitching_season.hr
+%p
+  %strong= model_class.human_attribute_name(:k) + ':'
+  %br
+  = @pitching_season.k
+%p
+  %strong= model_class.human_attribute_name(:bb) + ':'
+  %br
+  = @pitching_season.bb
+%p
+  %strong= model_class.human_attribute_name(:ibb) + ':'
+  %br
+  = @pitching_season.ibb
+%p
+  %strong= model_class.human_attribute_name(:hbp) + ':'
+  %br
+  = @pitching_season.hbp
+%p
+  %strong= model_class.human_attribute_name(:cg) + ':'
+  %br
+  = @pitching_season.cg
+%p
+  %strong= model_class.human_attribute_name(:sho) + ':'
+  %br
+  = @pitching_season.sho
+%p
+  %strong= model_class.human_attribute_name(:wp) + ':'
+  %br
+  = @pitching_season.wp
+%p
+  %strong= model_class.human_attribute_name(:bk) + ':'
+  %br
+  = @pitching_season.bk
+%p
+  %strong= model_class.human_attribute_name(:era) + ':'
+  %br
+  = @pitching_season.era
+%p
+  %strong= model_class.human_attribute_name(:whip) + ':'
+  %br
+  = @pitching_season.whip
+%p
+  %strong= model_class.human_attribute_name(:k_percent) + ':'
+  %br
+  = @pitching_season.k_percent
+%p
+  %strong= model_class.human_attribute_name(:bb_percent) + ':'
+  %br
+  = @pitching_season.bb_percent
+%p
+  %strong= model_class.human_attribute_name(:babip) + ':'
+  %br
+  = @pitching_season.babip
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), pitching_season_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_pitching_season_path(@pitching_season), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), pitching_season_path(@pitching_season), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

@@ -1,0 +1,77 @@
+- model_class = BattingSeason
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:team)
+      %th= model_class.human_attribute_name(:jersey_number)
+      %th= model_class.human_attribute_name(:season_order)
+      %th= model_class.human_attribute_name(:position)
+      %th= model_class.human_attribute_name(:ab)
+      %th= model_class.human_attribute_name(:gp)
+      %th= model_class.human_attribute_name(:pa)
+      %th= model_class.human_attribute_name(:singles)
+      %th= model_class.human_attribute_name(:doubles)
+      %th= model_class.human_attribute_name(:triples)
+      %th= model_class.human_attribute_name(:hr)
+      %th= model_class.human_attribute_name(:tb)
+      %th= model_class.human_attribute_name(:r)
+      %th= model_class.human_attribute_name(:rbi)
+      %th= model_class.human_attribute_name(:bb)
+      %th= model_class.human_attribute_name(:ibb)
+      %th= model_class.human_attribute_name(:so)
+      %th= model_class.human_attribute_name(:hbp)
+      %th= model_class.human_attribute_name(:sf)
+      %th= model_class.human_attribute_name(:sh)
+      %th= model_class.human_attribute_name(:gidp)
+      %th= model_class.human_attribute_name(:sb)
+      %th= model_class.human_attribute_name(:cs)
+      %th= model_class.human_attribute_name(:ba)
+      %th= model_class.human_attribute_name(:obp)
+      %th= model_class.human_attribute_name(:slg)
+      %th= model_class.human_attribute_name(:ops)
+      %th= model_class.human_attribute_name(:k_percent)
+      %th= model_class.human_attribute_name(:bb_percent)
+      %th= model_class.human_attribute_name(:created_at)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @batting_seasons.each do |batting_season|
+      %tr
+        %td= link_to batting_season.id, batting_season_path(batting_season)
+        %td= batting_season.team
+        %td= batting_season.jersey_number
+        %td= batting_season.season_order
+        %td= batting_season.position
+        %td= batting_season.ab
+        %td= batting_season.gp
+        %td= batting_season.pa
+        %td= batting_season.singles
+        %td= batting_season.doubles
+        %td= batting_season.triples
+        %td= batting_season.hr
+        %td= batting_season.tb
+        %td= batting_season.r
+        %td= batting_season.rbi
+        %td= batting_season.bb
+        %td= batting_season.ibb
+        %td= batting_season.so
+        %td= batting_season.hbp
+        %td= batting_season.sf
+        %td= batting_season.sh
+        %td= batting_season.gidp
+        %td= batting_season.sb
+        %td= batting_season.cs
+        %td= batting_season.ba
+        %td= batting_season.obp
+        %td= batting_season.slg
+        %td= batting_season.ops
+        %td= batting_season.k_percent
+        %td= batting_season.bb_percent
+        %td=l batting_season.created_at
+        %td
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_batting_season_path(batting_season), :class => 'btn btn-mini'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), batting_season_path(batting_season), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
+= link_to t('.new', :default => t("helpers.links.new")), new_batting_season_path, :class => 'btn btn-primary'

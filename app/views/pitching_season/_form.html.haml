@@ -1,0 +1,120 @@
+= form_for @pitching_season, :html => { :class => 'form-horizontal' } do |f|
+  .control-group
+    = f.label :team, :class => 'control-label'
+    .controls
+      = f.text_field :team, :class => 'text_field'
+  .control-group
+    = f.label :jersey_number, :class => 'control-label'
+    .controls
+      = f.number_field :jersey_number, :class => 'number_field'
+  .control-group
+    = f.label :season_order, :class => 'control-label'
+    .controls
+      = f.number_field :season_order, :class => 'number_field'
+  .control-group
+    = f.label :gp, :class => 'control-label'
+    .controls
+      = f.number_field :gp, :class => 'number_field'
+  .control-group
+    = f.label :gs, :class => 'control-label'
+    .controls
+      = f.number_field :gs, :class => 'number_field'
+  .control-group
+    = f.label :w, :class => 'control-label'
+    .controls
+      = f.number_field :w, :class => 'number_field'
+  .control-group
+    = f.label :l, :class => 'control-label'
+    .controls
+      = f.number_field :l, :class => 'number_field'
+  .control-group
+    = f.label :sv, :class => 'control-label'
+    .controls
+      = f.number_field :sv, :class => 'number_field'
+  .control-group
+    = f.label :bs, :class => 'control-label'
+    .controls
+      = f.number_field :bs, :class => 'number_field'
+  .control-group
+    = f.label :hld, :class => 'control-label'
+    .controls
+      = f.number_field :hld, :class => 'number_field'
+  .control-group
+    = f.label :outs, :class => 'control-label'
+    .controls
+      = f.number_field :outs, :class => 'number_field'
+  .control-group
+    = f.label :tbf, :class => 'control-label'
+    .controls
+      = f.number_field :tbf, :class => 'number_field'
+  .control-group
+    = f.label :h, :class => 'control-label'
+    .controls
+      = f.number_field :h, :class => 'number_field'
+  .control-group
+    = f.label :r, :class => 'control-label'
+    .controls
+      = f.number_field :r, :class => 'number_field'
+  .control-group
+    = f.label :er, :class => 'control-label'
+    .controls
+      = f.number_field :er, :class => 'number_field'
+  .control-group
+    = f.label :hr, :class => 'control-label'
+    .controls
+      = f.number_field :hr, :class => 'number_field'
+  .control-group
+    = f.label :k, :class => 'control-label'
+    .controls
+      = f.number_field :k, :class => 'number_field'
+  .control-group
+    = f.label :bb, :class => 'control-label'
+    .controls
+      = f.number_field :bb, :class => 'number_field'
+  .control-group
+    = f.label :ibb, :class => 'control-label'
+    .controls
+      = f.number_field :ibb, :class => 'number_field'
+  .control-group
+    = f.label :hbp, :class => 'control-label'
+    .controls
+      = f.number_field :hbp, :class => 'number_field'
+  .control-group
+    = f.label :cg, :class => 'control-label'
+    .controls
+      = f.number_field :cg, :class => 'number_field'
+  .control-group
+    = f.label :sho, :class => 'control-label'
+    .controls
+      = f.number_field :sho, :class => 'number_field'
+  .control-group
+    = f.label :wp, :class => 'control-label'
+    .controls
+      = f.number_field :wp, :class => 'number_field'
+  .control-group
+    = f.label :bk, :class => 'control-label'
+    .controls
+      = f.number_field :bk, :class => 'number_field'
+  .control-group
+    = f.label :era, :class => 'control-label'
+    .controls
+      = f.text_field :era, :class => 'text_field'
+  .control-group
+    = f.label :whip, :class => 'control-label'
+    .controls
+      = f.text_field :whip, :class => 'text_field'
+  .control-group
+    = f.label :k_percent, :class => 'control-label'
+    .controls
+      = f.text_field :k_percent, :class => 'text_field'
+  .control-group
+    = f.label :bb_percent, :class => 'control-label'
+    .controls
+      = f.text_field :bb_percent, :class => 'text_field'
+  .control-group
+    = f.label :babip, :class => 'control-label'
+    .controls
+      = f.text_field :babip, :class => 'text_field'
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), pitching_season_path, :class => 'btn'
