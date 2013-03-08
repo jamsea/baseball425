@@ -1,4 +1,3 @@
-== Welcome to Rails
-== Baseball_425
+== Baseball425
 
 Project to show baseball scores/stats.
