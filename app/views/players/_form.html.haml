@@ -10,7 +10,7 @@
   .control-group
     = f.label :date_of_birth, :class => 'control-label'
     .controls
-      = f.date_select :date_of_birth, :class => 'date_select'
+      = f.date_select :date_of_birth, :start_year => 1955, :class => 'date_select'
   .control-group
     = f.label :height, :class => 'control-label'
     .controls
