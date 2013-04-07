@@ -22,6 +22,10 @@
   %strong= model_class.human_attribute_name(:weight) + ':'
   %br
   = @player.weight
+%p
+  %strong= model_class.human_attribute_name(:team_id) + ':'
+  %br
+  = @player.team_id
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), players_path, :class => 'btn'

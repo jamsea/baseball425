@@ -11,11 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130308030926) do
+ActiveRecord::Schema.define(:version => 20130407203600) do
 
   create_table "batting_seasons", :force => true do |t|
-    t.string   "team"
-    t.integer  "jersey_number"
     t.integer  "season_order"
     t.string   "position"
     t.integer  "ab"
@@ -43,13 +41,12 @@ ActiveRecord::Schema.define(:version => 20130308030926) do
     t.float    "ops"
     t.float    "k_percent"
     t.float    "bb_percent"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "player_id"
   end
 
   create_table "pitching_seasons", :force => true do |t|
-    t.string   "team"
-    t.integer  "jersey_number"
     t.integer  "season_order"
     t.integer  "gp"
     t.integer  "gs"
@@ -77,8 +74,9 @@ ActiveRecord::Schema.define(:version => 20130308030926) do
     t.float    "k_percent"
     t.float    "bb_percent"
     t.float    "babip"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "player_id"
   end
 
   create_table "players", :force => true do |t|
@@ -89,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20130308030926) do
     t.float    "weight"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "team_id"
   end
 
   create_table "teams", :force => true do |t|

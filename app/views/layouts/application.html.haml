@@ -37,15 +37,7 @@
     .container-fluid
 
       .row-fluid
-        .span3
-          .well.sidebar-nav
-            %ul.nav.nav-list
-              %li.nav-header Options
-              %li= link_to "Players", "/players"
-              %li= link_to "Teams", "/teams"
-              %li= link_to "Batting Seasons", "/batting_seasons"
-              %li= link_to "Pitching Seasons", "/pitching_seasons"
-        .span9
+        .span12
           = bootstrap_flash
           = yield
     

@@ -6,12 +6,10 @@
         - @pitching_season.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :team
-    = f.text_field :team
-  .field
-    = f.label :jersey_number
-    = f.number_field :jersey_number
+  .control-group 
+    = f.label "Player", :class => 'control-label'
+    .controls
+      = select :pitching_season, :player_id, Player.all.collect {|p| [p.first_name + ' ' + p.last_name, p.id]}
   .field
     = f.label :season_order
     = f.number_field :season_order

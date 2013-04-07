@@ -1,9 +1,9 @@
-%h1 Listing batting_seasons
+%h1 Batting Seasons
 
 %table
   %tr
+    %th Name
     %th Team
-    %th Jersey number
     %th Season order
     %th Position
     %th Ab
@@ -37,8 +37,8 @@
 
   - @batting_seasons.each do |batting_season|
     %tr
-      %td= batting_season.team
-      %td= batting_season.jersey_number
+      %td= batting_season.player.full_name
+      %td= batting_season.player.team.team_name
       %td= batting_season.season_order
       %td= batting_season.position
       %td= batting_season.ab

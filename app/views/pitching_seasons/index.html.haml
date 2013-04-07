@@ -1,9 +1,9 @@
-%h1 Listing pitching_seasons
+%h1 Pitching Seasons
 
 %table
   %tr
+    %th Name
     %th Team
-    %th Jersey number
     %th Season order
     %th Gp
     %th Gs
@@ -38,8 +38,8 @@
 
   - @pitching_seasons.each do |pitching_season|
     %tr
-      %td= pitching_season.team
-      %td= pitching_season.jersey_number
+      %td= pitching_season.player.full_name
+      %td= pitching_season.player.team.team_name
       %td= pitching_season.season_order
       %td= pitching_season.gp
       %td= pitching_season.gs
