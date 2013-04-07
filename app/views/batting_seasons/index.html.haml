@@ -1,5 +1,9 @@
 %h1 Batting Seasons
 
+= form_tag batting_seasons_path, :method => 'get' do 
+  %p
+    = text_field_tag :search, params[:search]
+    = submit_tag "Search", :name => nil
 %table
   %tr
     %th Name
