@@ -1,29 +1,25 @@
----------- TABLE CREATION ----------
-
 CREATE TABLE teams (
-	id int PRIMARY KEY,
-	abbreviation varchar(3) PRIMARY KEY,
-	city varchar(12) NOT NULL, -- longest value in this column is 'San Francisco'
-	team_name varchar(13) NOT NULL, -- longest value in this column is 'Diamondbacks'
-	league varchar(2) NOT NULL, -- either 'AL' or 'NL'
-	division varchar(7) NOT NULL, -- either 'East', 'Central', or 'West'
-	created_at timestamp NOT NULL,
-	updated_at timestamp NOT NULL
+  abbreviation varchar(3) PRIMARY KEY,
+  city varchar(13) NOT NULL, -- longest value in this column is 'San Francisco'
+  team_name varchar(13) NOT NULL, -- longest value in this column is 'Diamondbacks'
+  league varchar(2) NOT NULL, -- either 'AL' or 'NL'
+  division varchar(7) NOT NULL, -- either 'East', 'Central', or 'West'
+  created_at timestamp NOT NULL,
+  updated_at timestamp NOT NULL
 );
 
 CREATE TABLE players (
-	id int PRIMARY KEY,
-	first_name varchar(15) NOT NULL,
-	last_name varchar(15) NOT NULL,
-	date_of_birth date NOT NULL,
-	height int NOT NULL,
-	weight int NOT NULL,
+  id int PRIMARY KEY,
+  first_name varchar(15) NOT NULL,
+  last_name varchar(15) NOT NULL,
+  date_of_birth date NOT NULL,
+  height int NOT NULL,
+  weight int NOT NULL,
     created_at timestamp NOT NULL,
-	updated_at timestamp NOT NULL
+  updated_at timestamp NOT NULL
 );
 
-CREATE TABLE batting_seasons
-(
+CREATE TABLE batting_seasons (
   id int NOT NULL,
   season_order int,
   position varchar(10) NOT NULL,
@@ -96,37 +92,35 @@ CREATE TABLE pitching_seasons
   CONSTRAINT fk_pps_team FOREIGN KEY (team_id) REFERENCES teams(id)
 );
 
----------- FUNCTIONS ----------
-
-CREATE OR REPLACE FUNCTION calculate_ERA(er IN int, outs IN int)
+CREATE OR REPLACE FUNCTION calculate_ERA(er IN NUMBER, outs IN NUMBER)
   RETURN NUMBER IS
 BEGIN
   RETURN er * 27 / outs;
 END calculate_ERA;
 /
 
-CREATE OR REPLACE FUNCTION calculate_WHIP(h IN int, bb IN int, outs IN int)
+CREATE OR REPLACE FUNCTION calculate_WHIP(h IN NUMBER, bb IN NUMBER, outs IN NUMBER)
   RETURN NUMBER IS
 BEGIN
-  RETURN (h + bb) / (OUTS / 3);
+  RETURN (h + bb) / (outs / 3);
 END calculate_WHIP;
 /
 
-CREATE OR REPLACE FUNCTION calculate_K_perc(k IN int, pa IN int)
+CREATE OR REPLACE FUNCTION calculate_K_perc(k IN NUMBER, pa IN NUMBER)
   RETURN NUMBER IS
 BEGIN
   RETURN (k / pa) * 100;
 END calculate_K_perc;
 /
 
-CREATE OR REPLACE FUNCTION calculate_BB_perc(bb IN int, pa IN int)
+CREATE OR REPLACE FUNCTION calculate_BB_perc(bb IN NUMBER, pa IN NUMBER)
   RETURN NUMBER IS
 BEGIN
   RETURN (bb / pa) * 100;
 END calculate_BB_perc;  
 /
 
-CREATE OR REPLACE FUNCTION calculate_BABIP(h IN NUMBER, hr IN int, ab IN int, k IN int, sf IN int) -- (h-hr)/(ab-SO-hr-sf)
+CREATE OR REPLACE FUNCTION calculate_BABIP(h IN NUMBER, hr IN int, ab IN int, k IN int, sf IN int) -- (h-hr)/(ab-so-hr-sf)
   RETURN NUMBER IS
 BEGIN
   RETURN (h - hr) / (ab + sf - k - hr);
@@ -140,6 +134,7 @@ RETURN ab + bb + hbp + sf + sh;
 END GetPA;
 /
 
+--Need to be tested
 CREATE OR REPLACE FUNCTION GetHits(singles IN int, doubles IN int, triples IN int, hr IN int)
 RETURN int IS
 BEGIN
@@ -168,44 +163,82 @@ RETURN (singles + (2 * doubles) + (3 * triples) + (4 * homeruns))/ab;
 END GetSLG;
 /
 
-CREATE OR REPLACE FUNCTION GetOPS(obp IN NUMBER, slg IN NUMBER)
+CREATE OR REPLACE FUNCTION GetOPS(OBP IN NUMBER, SLG IN NUMBER)
 RETURN NUMBER IS 
 BEGIN
-RETURN obp + slg;
+RETURN OBP + SLG;
 END GetOPS;
 /
 
----------- DATA INSERTION ----------
-
-INSERT INTO Teams VALUES('ASS', 'Asstown', 'Buttes', 'AL', 'Central');
-INSERT INTO PlayerInfo VALUES(1, 'Test', 'Player', '01-JAN-2000', 72, 200);
-INSERT INTO PlayerBattingSeason VALUES(1, 'ASS', 15, 1, '3', 139, NULL, 559, 117, 27, 8, 30, 129, 83, 67, 4, 139, 6, 7, 0, 7, 49, 5);
-INSERT INTO PlayerPitchingSeason VALUES (1,	'ASS', 35, 1, 33, 33, 17, 8, 0,	0, 0, 715, 956,	192, 81, 70, 19, 239, 60, 2, 5,	 6, 1, 2, 1);
-
----------- BATTING FUNCTION TESTS ----------
-
-SELECT getHits(singles, doubles, triples, hr) AS h, hr, ab, SO, sf, calculate_BABIP(getHits(singles, doubles, triples, hr), hr, ab, SO, sf) AS BABIP FROM PlayerBattingSeason;
+SELECT getHits(singles, doubles, triples, hr) AS h, hr, ab, so, sf, calculate_BABIP(getHits(singles, doubles, triples, hr), hr, ab, so, sf) AS BABIP FROM PlayerBattingSeason;
 SELECT ab, bb, hbp, sf, sh, GetPA(ab, bb, hbp, sf, sh) AS pa FROM PlayerBattingSeason;
 SELECT singles, doubles, triples, hr, getHits(singles, doubles, triples, hr) AS h FROM PlayerBattingSeason;
 SELECT getHits(singles, doubles, triples, hr) AS h, ab, GetBattingAverage(getHits(singles, doubles, triples, hr), ab) FROM PlayerBattingSeason;
-SELECT getHits(singles, doubles, triples, hr) AS h, bb, hbp, GetPA(ab, bb, hbp, sf, sh) AS pa, sh, GetOBP(getHits(singles, doubles, triples, hr), bb, hbp, GetPA(ab, bb, hbp, sf, sh), sh) AS obp FROM PlayerBattingSeason;
-SELECT singles, doubles, triples, hr, ab, GetSLG(singles, doubles, triples, hr, ab) AS slg FROM PlayerBattingSeason;
-SELECT GetOBP(getHits(singles, doubles, triples, hr), bb, hbp, GetPA(ab, bb, hbp, sf, sh), sh) AS obp, 
-GetSLG(singles, doubles, triples, hr, ab) AS slg, GetOPS(GetOBP(getHits(singles, doubles, triples, hr), bb, hbp, GetPA(ab, bb, hbp, sf, sh), sh), 
+SELECT getHits(singles, doubles, triples, hr) AS h, bb, hbp, GetPA(ab, bb, hbp, sf, sh) AS pa, sh, GetOBP(getHits(singles, doubles, triples, hr), bb, hbp, GetPA(ab, bb, hbp, sf, sh), sh) AS OBP FROM PlayerBattingSeason;
+SELECT singles, doubles, triples, hr, ab, GetSLG(singles, doubles, triples, hr, ab) AS SLG FROM PlayerBattingSeason;
+SELECT GetOBP(getHits(singles, doubles, triples, hr), bb, hbp, GetPA(ab, bb, hbp, sf, sh), sh) AS OBP, 
+GetSLG(singles, doubles, triples, hr, ab) AS SLG, GetOPS(GetOBP(getHits(singles, doubles, triples, hr), bb, hbp, GetPA(ab, bb, hbp, sf, sh), sh), 
 GetSLG(singles, doubles, triples, hr, ab)) AS OPS FROM PlayerBattingSeason;
 
----------- PITCHING FUNCTION TESTS ----------
+CREATE OR REPLACE TRIGGER PATrigger
+  BEFORE
+    INSERT OR UPDATE 
+  ON PlayerBattingSeason
+  FOR EACH ROW
+BEGIN
+  CASE
+    WHEN INSERTING OR UPDATING THEN
+    :NEW.pa := GetPA(:NEW.ab, :NEW.bb, :NEW.hbp, :NEW.sf, :NEW.sh);
+  END CASE;
+END;
+/
 
-SELECT er, OUTS, calculate_ERA(er, OUTS) AS ERA FROM PlayerPitchingSeason;
-SELECT h, bb, OUTS, calculate_WHIP(h, bb, OUTS) FROM PlayerPitchingSeason;
-SELECT k, TBF, calculate_K_perc(k, TBF) FROM PlayerPitchingSeason;
-SELECT bb, TBF, calculate_BB_perc(bb, TBF) FROM PlayerPitchingSeason;
-SELECT h, hr, TBF - bb, k, calculate_BABIP(h, hr, TBF - bb, k, 0) FROM PlayerPitchingSeason;
+CREATE OR REPLACE TRIGGER IPTrigger
+  BEFORE
+    INSERT OR UPDATE 
+  ON pitching_seasons
+  FOR EACH ROW
+BEGIN
+  CASE
+    WHEN INSERTING OR UPDATING THEN
+    :NEW.outs := FLOOR(:NEW.ip) * 3 + (10 * :NEW.ip - FLOOR(:NEW.ip));
+  END CASE;
+END;
+/
 
+UPDATE PlayerBattingSeason
+ SET pa = GetPA(ab, bb, hbp, sf, sh);
+ 
+UPDATE pitching_seasons
+ SET outs = FLOOR(ip) * 3 + (10 * ip - FLOOR(ip));
+ 
+ CREATE OR REPLACE VIEW v_Batters AS
+  SELECT MAX(first_name) || ' ' || MAX(last_name) AS Name, SUM(gp) AS gp, SUM(pa) AS pa, SUM(ab) AS ab, 
+  TO_CHAR(ROUND(GetBattingAverage(getHits(SUM(singles), SUM(doubles), SUM(triples), SUM(hr)), SUM(ab)),3), '9.999') AS AVG,
+  TO_CHAR(ROUND(GetOBP(getHits(SUM(singles), SUM(doubles), SUM(triples), SUM(hr)), SUM(bb), SUM(hbp), GetPA(SUM(ab), SUM(bb), SUM(hbp), SUM(sf), SUM(sh)), SUM(sh)),3), '9.999') AS OBP,
+  TO_CHAR(ROUND(GetSLG(SUM(singles), SUM(doubles), SUM(triples), SUM(hr), SUM(ab)),3), '9.999') AS SLG,
+  TO_CHAR(ROUND(GetOPS(GetOBP(getHits(SUM(singles), SUM(doubles), SUM(triples), SUM(hr)), SUM(bb), SUM(hbp), 
+  GetPA(SUM(ab), SUM(bb), SUM(hbp), SUM(sf), SUM(sh)), SUM(sh)), 
+  GetSLG(SUM(singles), SUM(doubles), SUM(triples), SUM(hr), SUM(ab))),3), '9.999') AS OPS,
+  getHits(SUM(singles), SUM(doubles), SUM(triples), SUM(hr)) AS h, 
+  SUM(hr) AS hr , SUM(r) AS r, SUM(rbi) AS rbi, SUM(sb) AS sb, SUM(cs) AS cs, SUM(bb) AS bb, SUM(ibb) AS ibb, 
+  SUM(so) AS so, SUM(hbp) AS hbp, SUM(sf) AS sf, SUM(sh) AS sh, SUM(gidp) AS gidp
+  FROM PlayerBattingSeason a LEFT JOIN players b ON a.id = b.id
+  GROUP BY a.PlayerID
+  ORDER BY OPS DESC;
 
-
-
-
+ CREATE OR REPLACE VIEW v_Pitchers AS
+  SELECT MAX(first_name) || ' ' || MAX(last_name) AS Name, SUM(gp) AS gp, SUM(gs) AS gs, TO_CHAR(calculate_ERA(SUM(er), SUM(outs)), '0.00') AS ERA,
+  TO_CHAR(calculate_WHIP(SUM(h), SUM(bb), SUM(outs)), '0.00') AS WHIP, SUM(w) AS w, SUM(l) AS l, SUM(sv) AS sv,
+  FLOOR(SUM(outs)/3) + MOD(SUM(outs),3)/10 AS ip, SUM(tbf) AS tbf, SUM(h) AS h, SUM(r) AS r, SUM(er) AS er, SUM(hr) AS hr, 
+  SUM(k) AS k, SUM(bb) AS bb, SUM(ibb) AS ibb, SUM(hbp) AS hbp,SUM(cg) AS cg, SUM(sho) AS sho, SUM(wp) AS wp, SUM(bk) AS bk
+  FROM pitching_seasons a LEFT JOIN players b ON a.id = b.id
+  GROUP BY a.PlayerID
+  ORDER BY ip DESC; 
+  
+SELECT er, outs, TO_CHAR(calculate_ERA(er, outs), '0.00') AS ERA
+From playerpitchingseason
+where playerid = 1060;
 
 
 
